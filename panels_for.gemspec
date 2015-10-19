@@ -22,4 +22,5 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", ">= 3.2", "< 5.0"
 
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "coveralls"
 end
