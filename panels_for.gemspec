@@ -9,15 +9,17 @@ Gem::Specification.new do |s|
   s.version     = PanelsFor::VERSION
   s.authors     = ["Ole J. Rosendahl"]
   s.email       = ["ole.johnny.rosendahl@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of PanelsFor."
-  s.description = "TODO: Description of PanelsFor."
+  s.homepage    = "https://github.com/blacktangent/panels_for"
+  s.summary     = "ActionView Helper for generating Bootstrap panels."
+  s.description = s.summary
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.2.4"
+  s.required_ruby_version = '>= 1.9.3'
+
+  s.add_dependency "rails", ">= 3.2", "< 5.0"
 
   s.add_development_dependency "sqlite3"
 end
