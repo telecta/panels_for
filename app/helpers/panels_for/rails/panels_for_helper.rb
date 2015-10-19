@@ -9,16 +9,24 @@ module PanelsFor
       private
 
       class PanelBuilder
+        include ActionView::Helpers
+
+        attr_accessor :object, :template, :output_buffer
 
         def initialize(object, template)
+          @object, @template = object, template
         end
 
-        def panel(*args, &block)
-          "<div class=\"panel\"></div>".html_safe
+        def panel(title, &block)
+          content_tag(:div, class: "panel panel-default") do
+            concat(content_tag(:div, title.to_s.titleize, class: "panel-heading"))
+            concat(content_tag(:div, class: "panel-body") do
+              template.capture(&block)
+            end)
+          end
         end
 
       end
-
     end
   end
 end
