@@ -3,7 +3,7 @@ require "test_helper"
 class PanelsFor::Rails::PanelsForHelperTest < ActionView::TestCase
 
   test "#panel draws a panel with content" do
-    expected = "<div class=\"panel panel-default\"><div class=\"panel-heading\">Graphs</div><div class=\"panel-body\">Content</div></div>"
+    expected = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h3 class=\"panel-title\">Graphs</h3></div><div class=\"panel-body\">Content</div></div>"
     assert_panel_for(expected, object) do |b|
       b.panel(:graphs) { "Content" }
     end
