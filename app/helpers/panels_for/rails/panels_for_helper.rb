@@ -19,12 +19,20 @@ module PanelsFor
 
         def panel(title, &block)
           content_tag(:div, class: "panel panel-default") do
-            concat(content_tag(:div, class: "panel-heading") do
-              content_tag(:h3, title.to_s.titleize, class: "panel-title")
-            end)
-            concat(content_tag(:div, class: "panel-body") do
-              template.capture(&block)
-            end)
+            concat(panel_heading(title))
+            concat(panel_body(&block))
+          end
+        end
+
+        def panel_heading(title)
+          content_tag(:div, class: "panel-heading") do
+            content_tag(:h3, title.to_s.titleize, class: "panel-title")
+          end
+        end
+
+        def panel_body(&block)
+          content_tag(:div, class: "panel-body") do
+            template.capture(&block)
           end
         end
 
