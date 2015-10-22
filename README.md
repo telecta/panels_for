@@ -32,7 +32,7 @@ Or install it yourself as:
 
 ```erb
 <%= panels_for @project do |b| %>
-  <%= b.panel :managers do %>
+  <%= b.panel :managers, icon: 'users' do %>
     Content goes here!
   <% end %>
 <% end %>
