@@ -9,6 +9,13 @@ class PanelsFor::Rails::PanelsForHelperTest < ActionView::TestCase
     end
   end
 
+  test "#panel options[:icon] draws panel with icon prefixed title" do
+    expected = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h3 class=\"panel-title\"><i class=\"fa fa-line-chart\"></i> Graphs</h3></div><div class=\"panel-body\">Content</div></div>"
+    assert_panel_for(expected, object) do |b|
+      b.panel(:graphs, icon: "line-chart") { "Content" }
+    end
+  end
+
   private
 
   def object

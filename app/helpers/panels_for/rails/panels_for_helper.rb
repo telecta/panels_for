@@ -10,6 +10,7 @@ module PanelsFor
 
       class PanelBuilder
         include ActionView::Helpers
+        include FontAwesome::Rails::IconHelper
 
         attr_accessor :object, :template, :output_buffer
 
@@ -17,16 +18,19 @@ module PanelsFor
           @object, @template = object, template
         end
 
-        def panel(title, &block)
+        def panel(title, options = {}, &block)
           content_tag(:div, class: "panel panel-default") do
-            concat(panel_heading(title))
+            concat(panel_heading(title, options))
             concat(panel_body(&block))
           end
         end
 
-        def panel_heading(title)
+        def panel_heading(title, options = {})
+          content = title.to_s.titleize
+          content = fa_icon(options[:icon], text: content) if options.has_key?(:icon)
+
           content_tag(:div, class: "panel-heading") do
-            content_tag(:h3, title.to_s.titleize, class: "panel-title")
+            content_tag(:h3, content, class: "panel-title")
           end
         end
 
