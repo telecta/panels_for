@@ -38,6 +38,9 @@ Or install it yourself as:
   <%= b.panel :graphs, icon: 'line-chart', collapse: true do %>
     Graphs here!
   <% end %>
+  <%= b.panel :files, icon: 'file', collapse: true, collapsed: true %>
+    Files here!
+  <% end %>
 <% end %>
 ```
 
@@ -45,6 +48,7 @@ Or install it yourself as:
 
 * __:icon__ - Font Awesome icon to use.
 * __:collapse__ - Make panel collapsable
+* __:collapsed__ - Draw panel collapsed
 
 ## Development
 

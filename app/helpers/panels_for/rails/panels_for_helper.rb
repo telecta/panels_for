@@ -65,7 +65,9 @@ module PanelsFor
           heading_id = "heading_#{title.to_s.underscore}"
 
           if options[:collapse]
-            content_tag(:div, id: body_id, class: "panel-collapse collapse in", role: "tabpanel", aria: {labelledby: heading_id}) do
+            classes = "panel-collapse collapse"
+            classes << " in" unless options[:collapsed]
+            content_tag(:div, id: body_id, class: classes, role: "tabpanel", aria: {labelledby: heading_id}) do
               content
             end
           else

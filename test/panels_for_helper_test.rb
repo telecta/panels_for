@@ -23,6 +23,13 @@ class PanelsFor::Rails::PanelsForHelperTest < ActionView::TestCase
     end
   end
 
+  test "#panel options[:collapse] and options[:collapsed] generates a collapsable panel" do
+    expected = "<div class=\"panel-group\" id=\"graphs_accordian\" role=\"tablist\" aria-multiselectable=\"true\"><div class=\"panel panel-default\"><div class=\"panel-heading\" role=\"tab\" id=\"heading_graphs\"><h4 class=\"panel-title\"><a role=\"button\" data-toggle=\"collapse\" data-parent=\"#graphs_accordian\" aria-expanded=\"false\" aria-controls=\"collapse_graphs\" href=\"#collapse_graphs\">Graphs</a></h4></div><div id=\"collapse_graphs\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading_graphs\"><div class=\"panel-body\">Content</div></div></div></div>"
+    assert_panel_for(expected, object) do |b|
+      b.panel(:graphs, collapse: true, collapsed: true) { "Content" }
+    end
+  end
+
   private
 
   def object
