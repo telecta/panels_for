@@ -35,8 +35,16 @@ Or install it yourself as:
   <%= b.panel :managers, icon: 'users' do %>
     Content goes here!
   <% end %>
+  <%= b.panel :graphs, icon: 'line-chart', collapse: true do %>
+    Graphs here!
+  <% end %>
 <% end %>
 ```
+
+## Options
+
+* __:icon__ - Font Awesome icon to use.
+* __:collapse__ - Make panel collapsable
 
 ## Development
 
