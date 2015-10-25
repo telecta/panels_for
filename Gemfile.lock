@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    panels_for (0.1.0)
+    panels_for (0.2.0)
       font-awesome-rails (~> 4.0)
       rails (>= 3.2, < 5.0)
 
