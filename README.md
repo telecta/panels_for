@@ -46,9 +46,10 @@ Or install it yourself as:
 
 ## Options
 
-* __:icon__ - Font Awesome icon to use.
-* __:collapse__ - Make panel collapsable
-* __:collapsed__ - Draw panel collapsed
+* __:icon__ - Font Awesome icon to use..
+* __:collapse__ - Make panel collapsable.
+* __:collapsed__ - Draw panel collapsed.
+* __:id__ - ID of HTML element.
 
 ## Development
 

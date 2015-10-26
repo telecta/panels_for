@@ -27,7 +27,11 @@ module PanelsFor
         private
 
         def panel_default(title, options = {}, &block)
-          content_tag(:div, class: 'panel panel-default') do
+          html_options = {}
+          html_options[:id] = options.delete(:id) if options.key?(:id)
+          html_options.reverse_merge!({ class: 'panel panel-default' })
+
+          content_tag(:div, html_options) do
             concat(panel_heading(title, options))
             concat(panel_body(title, options, &block))
           end

@@ -30,6 +30,13 @@ class PanelsFor::Rails::PanelsForHelperTest < ActionView::TestCase
     end
   end
 
+  test "#panel options[:id] creates a panel with the given id" do
+    expected = "<div class=\"panel panel-default\" id=\"graphs\"><div class=\"panel-heading\"><h4 class=\"panel-title\">Graphs</h4></div><div class=\"panel-body\">Content</div></div>"
+    assert_panel_for(expected, object) do |b|
+      b.panel(:graphs, id: :graphs) { "Content" }
+    end
+  end
+
   private
 
   def object
