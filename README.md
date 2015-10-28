@@ -2,6 +2,7 @@
 [codeclimate]: https://codeclimate.com/github/blacktangent/panels_for
 [coveralls]: https://coveralls.io/r/blacktangent/panels_for
 [rubygems]: https://rubygems.org/gems/panels_for
+[gemnasium]: https://gemnasium.com/blacktangent/panels_for
 
 # PanelsFor
 
@@ -9,6 +10,7 @@
 [![Code Climate](https://codeclimate.com/github/blacktangent/panels_for/badges/gpa.svg)][codeclimate]
 [![Test Coverage](http://img.shields.io/coveralls/blacktangent/panels_for/master.svg)][coveralls]
 [![Gem Version](http://img.shields.io/gem/v/panels_for.svg)][rubygems]
+[![Dependency Status](https://gemnasium.com/blacktangent/panels_for.png)][gemnasium]
 
 ActionView Helper for generating Bootstrap panels.
 
