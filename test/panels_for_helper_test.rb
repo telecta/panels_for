@@ -37,6 +37,13 @@ class PanelsFor::Rails::PanelsForHelperTest < ActionView::TestCase
     end
   end
 
+  test "#panel options[:title] creates a panel with title in header" do
+    expected = '<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title">Hello</h4></div><div class="panel-body">Content</div></div>'
+    assert_panel_for(expected, object) do |b|
+      b.panel(:graphs, title: 'Hello') { 'Content' }
+    end
+  end
+
   private
 
   def object

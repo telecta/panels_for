@@ -19,57 +19,58 @@ module PanelsFor
           @template = template
         end
 
-        def panel(title, options = {}, &block)
-          content = panel_default(title, options, &block)
-          options[:collapse] ? panel_group(title, content) : content
+        def panel(name, options = {}, &block)
+          content = panel_default(name, options, &block)
+          options[:collapse] ? panel_group(name, content) : content
         end
 
         private
 
-        def panel_default(title, options = {}, &block)
+        def panel_default(name, options = {}, &block)
           html_options = {}
           html_options[:id] = options.delete(:id) if options.key?(:id)
           html_options.reverse_merge!({ class: 'panel panel-default' })
 
           content_tag(:div, html_options) do
-            concat(panel_heading(title, options))
-            concat(panel_body(title, options, &block))
+            concat(panel_heading(name, options))
+            concat(panel_body(name, options, &block))
           end
         end
 
-        def panel_group(title, content)
+        def panel_group(name, content)
           content_tag(
             :div,
             content,
             class:
             'panel-group',
-            id: "#{title.to_s.underscore}_accordian",
+            id: "#{name.to_s.underscore}_accordian",
             role: 'tablist',
             aria: { multiselectable: 'true' }
           )
         end
 
-        def panel_heading(title, options = {})
-          content = prepare_content(title, options)
+        def panel_heading(name, options = {})
+          title = prepare_title(name, options)
           expanded = options[:expanded] ? 'true' : 'false'
 
           if options[:collapse]
             content = link_to(
-              content, "##{collapse_id(title)}",
+              title,
+              "##{collapse_id(name)}",
               role: 'button',
               data: {
                 toggle: 'collapse',
-                parent: "##{title.to_s.underscore}_accordian"
+                parent: "##{name.to_s.underscore}_accordian"
               },
-              aria: { expanded: expanded, controls: collapse_id(title) }
+              aria: { expanded: expanded, controls: collapse_id(name) }
             )
             content_tag(:div, panel_title(content),
                         class: 'panel-heading',
                         role: 'tab',
-                        id: heading_id(title))
+                        id: heading_id(name))
           else
             content_tag(:div, class: 'panel-heading') do
-              panel_title(content)
+              panel_title(title)
             end
           end
         end
@@ -103,9 +104,9 @@ module PanelsFor
           )
         end
 
-        def prepare_content(title, options)
-          content = title.to_s.titleize
-          options[:icon] ? fa_icon(options[:icon], text: content) : content
+        def prepare_title(name, options)
+          title = options[:title] || name.to_s.titleize
+          options[:icon] ? fa_icon(options[:icon], text: title) : title
         end
 
         def heading_id(title)
