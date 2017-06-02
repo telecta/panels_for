@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    panels_for (0.2.6)
+    panels_for (0.2.7)
       font-awesome-rails (~> 4.0)
       rails (>= 3.2, < 6)
 
@@ -140,4 +140,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.14.5
+   1.14.6
